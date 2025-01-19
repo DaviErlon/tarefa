@@ -32,7 +32,7 @@ Cada botão do teclado é mapeado para uma posição na matriz e representa um c
 6. **Funcionalidade Extra - Modo Alarme:**
    - A tecla `1` aciona a função `alarm_mode`, que faz os LEDs piscarem 10 vezes juntamente com o efeito sonoro emitido pelo buzzer.
 7. **Funcionalidade Extra - Modo Desligar Leds em sequencia:**
-   - A tecla `1` aciona a função `pisca_leds_sequencia`, que faz os leds desligarem em sequencia, três vezes, e piscar os mesmos simultaneamente juntamente com o acionamento do Buzzer.
+   - A tecla `0` aciona a função `pisca_leds_sequencia`, que faz os leds desligarem em sequencia, três vezes, e piscar os mesmos simultaneamente juntamente com o acionamento do Buzzer.
 
 
 ## Hardware Utilizado
@@ -70,6 +70,6 @@ Adicione aqui o link para o vídeo de demonstração do projeto:
 Este projeto está sob a licença MIT. Você é livre para modificar e usar o código conforme necessário, desde que mantenha a referência ao autor original.
 
 ---
-**Autores:** Theógenes Gabriel Araújo de Andrade, Lucas Dias da Silva, Marco Túlio Macêdo O. dos Santos
+**Autores:** Theógenes Gabriel Araújo de Andrade, Lucas Dias da Silva, Marco Túlio Macêdo O. dos Santos, Luis Filipe Vieira Silva
 
 
