@@ -59,6 +59,31 @@ char read_keypad() {
     return '\0';
 }
 
+// Definição dos Dispositivos de Saída
+void Disp_OUT() {
+   //Leds inicialização
+    gpio_init(LED_GREEN);
+    gpio_set_dir(LED_GREEN, GPIO_OUT);   
+    gpio_init(LED_BLUE);
+    gpio_set_dir(LED_BLUE, GPIO_OUT);   
+    gpio_init(LED_RED);
+    gpio_set_dir(LED_RED, GPIO_OUT);   
+
+    //Buzzer inicialização
+    gpio_init(BUZZER);
+    gpio_set_dir(BUZZER, GPIO_OUT);
+}
+
+// inicialização e definição da frequência sonora
+void play_som(){
+  for (int i = 0; i < 80; i++) {
+    gpio_put(BUZZER, 1);
+    sleep_ms(2);
+    gpio_put(BUZZER, 0);
+    sleep_ms(2);
+  }
+}
+
 // Função para ligar e desligar os Leds em sequencia e acionar Buzzer, de forma coordenadada
 void piscar_leds_sequencia(){
     for(int i = 0; i< 3; i++){
@@ -97,29 +122,38 @@ void piscar_leds_sequencia(){
     }
 }
 
-// Definição dos Dispositivos de Saída
-void Disp_OUT() {
-   //Leds inicialização
-    gpio_init(LED_GREEN);
-    gpio_set_dir(LED_GREEN, GPIO_OUT);   
-    gpio_init(LED_BLUE);
-    gpio_set_dir(LED_BLUE, GPIO_OUT);   
-    gpio_init(LED_RED);
-    gpio_set_dir(LED_RED, GPIO_OUT);   
+void alarm_mode() {
+    for(int i = 0; i <= 10; i++) {
+        gpio_put(LED_GREEN, 1);
+        gpio_put(LED_BLUE, 1);
+        gpio_put(LED_RED, 1);
+        play_som();
+        sleep_ms(200);
 
-    //Buzzer inicialização
-    gpio_init(BUZZER);
-    gpio_set_dir(BUZZER, GPIO_OUT);
+        gpio_put(LED_GREEN, 0);
+        gpio_put(LED_BLUE, 0);
+        gpio_put(LED_RED, 0);
+        sleep_ms(200);
+    }
 }
-// inicialização e definição da frequência sonora
-void play_som(){
-  for (int i = 0; i < 80; i++) {
-    gpio_put(BUZZER, 1);
-    sleep_ms(2);
-    gpio_put(BUZZER, 0);
-    sleep_ms(2);
-  }
+
+// Função para piscar LEDs em sequência
+void pisca_leds() {
+    for (int i = 0; i < 3; i++) { // Pisca 3 vezes
+        gpio_put(LED_GREEN, 1);
+        sleep_ms(200);
+        gpio_put(LED_GREEN, 0);
+
+        gpio_put(LED_BLUE, 1);
+        sleep_ms(200);
+        gpio_put(LED_BLUE, 0);
+
+        gpio_put(LED_RED, 1);
+        sleep_ms(200);
+        gpio_put(LED_RED, 0);
+    }
 }
+
 int main() {
 
     //Inicialição das funções
@@ -132,6 +166,12 @@ int main() {
         char key = read_keypad();
         if (key != '\0') {
             switch (key) {
+                case '0':
+                    piscar_leds_sequencia();
+                    break;
+                case '1':
+                    alarm_mode();
+                    break;
                 case 'A':
                     gpio_put(LED_GREEN, 1);
                     sleep_ms(10);
@@ -159,9 +199,9 @@ int main() {
                 case '#':
                     play_som();
                     break;
-                case '0':
-                    piscar_leds_sequencia();
-                    break;
+                case '*':
+                    pisca_leds();
+                    break;  
             }
         }
         //time para fluidez da execução
