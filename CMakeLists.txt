@@ -67,7 +67,7 @@ target_include_directories(tarefa PRIVATE
 ${CMAKE_CURRENT_LIST_DIR}
 )
 
-target_link_libraries(matriz 
+target_link_libraries(tarefa 
 
     )
 
