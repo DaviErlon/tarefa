@@ -98,6 +98,23 @@ void alarm_mode() {
     }
 }
 
+// Função para piscar LEDs em sequência
+void pisca_leds() {
+    for (int i = 0; i < 3; i++) { // Pisca 3 vezes
+        gpio_put(LED_GREEN, 1);
+        sleep_ms(200);
+        gpio_put(LED_GREEN, 0);
+
+        gpio_put(LED_BLUE, 1);
+        sleep_ms(200);
+        gpio_put(LED_BLUE, 0);
+
+        gpio_put(LED_RED, 1);
+        sleep_ms(200);
+        gpio_put(LED_RED, 0);
+    }
+}
+
 int main() {
 
     //Inicialição das funções
@@ -140,6 +157,9 @@ int main() {
                 case '#':
                     play_som();
                     break;
+                case '*':
+                    pisca_leds();
+                    break;  
             }
         }
         //time para fluidez da execução
