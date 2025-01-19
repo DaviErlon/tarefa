@@ -83,6 +83,21 @@ void play_som(){
   }
 }
 
+void alarm_mode() {
+    for(int i = 0; i <= 10; i++) {
+        gpio_put(LED_GREEN, 1);
+        gpio_put(LED_BLUE, 1);
+        gpio_put(LED_RED, 1);
+        play_som();
+        sleep_ms(200);
+
+        gpio_put(LED_GREEN, 0);
+        gpio_put(LED_BLUE, 0);
+        gpio_put(LED_RED, 0);
+        sleep_ms(200);
+    }
+}
+
 // Função para piscar LEDs em sequência
 void pisca_leds() {
     for (int i = 0; i < 3; i++) { // Pisca 3 vezes
@@ -100,7 +115,6 @@ void pisca_leds() {
     }
 }
 
-
 int main() {
 
     //Inicialição das funções
@@ -113,6 +127,9 @@ int main() {
         char key = read_keypad();
         if (key != '\0') {
             switch (key) {
+                case '1':
+                    alarm_mode();
+                    break;
                 case 'A':
                     gpio_put(LED_GREEN, 1);
                     sleep_ms(10);
