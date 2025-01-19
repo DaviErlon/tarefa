@@ -42,28 +42,34 @@ set(PICO_BOARD pico_w CACHE STRING "Board type")
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-
-project(blink C CXX ASM)
+project(tarefa C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
-
-add_executable(blink
-    blink.c
+add_executable(tarefa
+    tarefa.c
     )
 
-# pull in common dependencies
-target_link_libraries(blink pico_stdlib hardware_gpio)
-
-if (PICO_CYW43_SUPPORTED)
-    target_link_libraries(blink pico_cyw43_arch_none)
-endif()
-
-# create map/bin/hex file etc.
-pico_add_extra_outputs(blink)
+pico_set_program_name(tarefa "tarefa")
+pico_set_program_version(tarefa "0.1")
 
 # add url via pico_set_program_url
-pico_enable_stdio_usb(blink 1)
-pico_enable_stdio_uart(blink 1)
+pico_enable_stdio_usb(tarefa 1)
+pico_enable_stdio_uart(tarefa 1)
+
+# pull in common dependencies
+target_link_libraries(tarefa 
+    pico_stdlib)
+
+target_include_directories(tarefa PRIVATE
+${CMAKE_CURRENT_LIST_DIR}
+)
+
+target_link_libraries(matriz 
+
+    )
+
+# create map/bin/hex file etc.
+pico_add_extra_outputs(tarefa)
