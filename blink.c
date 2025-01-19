@@ -73,6 +73,7 @@ void Disp_OUT() {
     gpio_init(BUZZER);
     gpio_set_dir(BUZZER, GPIO_OUT);
 }
+
 // inicialização e definição da frequência sonora
 void play_som(){
   for (int i = 0; i < 80; i++) {
@@ -81,6 +82,44 @@ void play_som(){
     gpio_put(BUZZER, 0);
     sleep_ms(2);
   }
+}
+
+// Função para ligar e desligar os Leds em sequencia e acionar Buzzer, de forma coordenadada
+void piscar_leds_sequencia(){
+    for(int i = 0; i< 3; i++){
+        gpio_put(LED_GREEN, 1);
+        gpio_put(LED_BLUE, 1);
+        gpio_put(LED_RED, 1);
+        sleep_ms(200);
+
+        gpio_put(LED_GREEN, 0);
+        gpio_put(LED_BLUE, 1);
+        gpio_put(LED_RED, 1);
+        sleep_ms(200);
+
+        gpio_put(LED_GREEN, 0);
+        gpio_put(LED_BLUE, 0);
+        gpio_put(LED_RED, 1);
+        sleep_ms(200);
+
+        gpio_put(LED_GREEN, 0);
+        gpio_put(LED_BLUE, 0);
+        gpio_put(LED_RED, 0);
+        sleep_ms(200);
+    }
+    for(int j = 0; j<3; j++){
+
+        gpio_put(LED_GREEN, 1);
+        gpio_put(LED_BLUE, 1);
+        gpio_put(LED_RED, 1);
+        play_som();
+        sleep_ms(250);
+        
+        gpio_put(LED_GREEN, 0);
+        gpio_put(LED_BLUE, 0);
+        gpio_put(LED_RED, 0);
+        sleep_ms(250);
+    }
 }
 
 void alarm_mode() {
@@ -127,6 +166,9 @@ int main() {
         char key = read_keypad();
         if (key != '\0') {
             switch (key) {
+                case '0':
+                    piscar_leds_sequencia();
+                    break;
                 case '1':
                     alarm_mode();
                     break;
