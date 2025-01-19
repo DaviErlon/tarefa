@@ -27,6 +27,8 @@ Cada botão do teclado é mapeado para uma posição na matriz e representa um c
    - Tecla `D`: Liga todos os LEDs simultaneamente.
 4. **Controle do Buzzer:**
    - Tecla `#`: Aciona o buzzer com uma frequência predefinida.
+5. **Funcionalidade Extra - Pisca LEDs em Sequência:**
+   - A tecla `*` aciona a função `pisca_leds`, que faz os LEDs piscarem em sequência, três vezes, indicando um evento ou status.
 
 ## Hardware Utilizado
 - **Microcontrolador:** Raspberry Pi Pico.
@@ -63,6 +65,6 @@ Adicione aqui o link para o vídeo de demonstração do projeto:
 Este projeto está sob a licença MIT. Você é livre para modificar e usar o código conforme necessário, desde que mantenha a referência ao autor original.
 
 ---
-**Autores:** Theógenes Gabriel Araújo de Andrade, 
+**Autores:** Theógenes Gabriel Araújo de Andrade, Lucas Dias da Silva
 
 
