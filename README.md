@@ -31,6 +31,8 @@ Cada botão do teclado é mapeado para uma posição na matriz e representa um c
    - A tecla `*` aciona a função `pisca_leds`, que faz os LEDs piscarem em sequência, três vezes, indicando um evento ou status.
 6. **Funcionalidade Extra - Modo Alarme:**
    - A tecla `1` aciona a função `alarm_mode`, que faz os LEDs piscarem 10 vezes juntamente com o efeito sonoro emitido pelo buzzer.
+7. **Funcionalidade Extra - Modo Desligar Leds em sequencia:**
+   - A tecla `1` aciona a função `pisca_leds_sequencia`, que faz os leds desligarem em sequencia, três vezes, e piscar os mesmos simultaneamente juntamente com o acionamento do Buzzer.
 
 
 ## Hardware Utilizado
