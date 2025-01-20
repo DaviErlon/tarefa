@@ -33,6 +33,9 @@ Cada botão do teclado é mapeado para uma posição na matriz e representa um c
    - A tecla `1` aciona a função `alarm_mode`, que faz os LEDs piscarem 10 vezes juntamente com o efeito sonoro emitido pelo buzzer.
 7. **Funcionalidade Extra - Modo Desligar Leds em sequencia:**
    - A tecla `0` aciona a função `pisca_leds_sequencia`, que faz os leds desligarem em sequencia, três vezes, e piscar os mesmos simultaneamente juntamente com o acionamento do Buzzer.
+8. **Funcionalidade Extra - Tocar "Cai Cai Balão":**
+   - A tecla `2` aciona a função `musica`, que faz o acionamento do buzzer em frêquencia certas para tocar as notas da música Cai Cai Balão.
+
 
 
 ## Hardware Utilizado
