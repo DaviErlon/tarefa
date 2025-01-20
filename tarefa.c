@@ -154,6 +154,123 @@ void pisca_leds() {
     }
 }
 
+// Função que toca notas musicais (Davi Erlon Lopes de Morais).
+
+// Esses números que correspondem as notas foram calculados por mim
+// com base na frequencia sonora que essas notas fazem no ar.
+// Há lista dessas frequências na internet e calculei aproximadamente os
+// microssegundos necessários em um laço de repetição para fazer estas frequências.
+
+void tocar_nota(uint16_t nota, uint32_t tempo){
+
+  switch (nota)
+  {
+  case 1:   // dó
+    nota = 3780; 
+    break; 
+  case 2:   // ré 
+    nota = 3370;
+    break;
+  case 3:   // mi
+    nota = 3000;
+    break;
+  case 4:   // fá
+    nota = 2830;
+    break;
+  case 5:   // sol
+    nota = 2520;
+    break;
+  case 6:   // lá
+    nota = 2250;
+    break;
+  case 7:   //si
+    nota = 2000;
+    break;
+  }
+
+  uint32_t start_time = time_us_32();
+  while (time_us_32() - start_time < tempo) {
+    gpio_put(BUZZER, 1);
+    sleep_us(nota);
+    gpio_put(BUZZER, 0);
+    sleep_us(nota);
+  }
+}
+
+void musica(){
+    tocar_nota(5, 300000);
+    sleep_ms(100);
+    tocar_nota(5, 300000);
+    sleep_ms(100);
+    tocar_nota(4, 150000);
+    sleep_ms(100);
+    tocar_nota(3, 150000);
+
+    sleep_ms(200);
+
+    tocar_nota(5, 300000);
+    sleep_ms(100);
+    tocar_nota(5, 300000);
+    sleep_ms(100);
+    tocar_nota(4, 150000);
+    sleep_ms(100);
+    tocar_nota(3, 150000);
+
+    sleep_ms(250);
+
+    tocar_nota(5, 200000);
+    sleep_ms(100);
+    tocar_nota(6, 200000);
+    sleep_ms(100);
+    tocar_nota(5, 200000);
+    sleep_ms(100);
+    tocar_nota(4, 200000);
+    sleep_ms(100);
+    tocar_nota(3, 200000);
+    sleep_ms(100);
+    tocar_nota(2, 200000);
+
+    sleep_ms(250);
+
+    tocar_nota(2, 150000);
+    sleep_ms(100);
+    tocar_nota(3, 150000);
+    sleep_ms(100);
+    tocar_nota(4, 150000);
+
+    sleep_ms(250);
+
+    tocar_nota(2, 150000);
+    sleep_ms(100);
+    tocar_nota(3, 150000);
+    sleep_ms(100);
+    tocar_nota(4, 150000);
+
+    sleep_ms(250);
+
+    tocar_nota(2, 150000);
+    sleep_ms(100);
+    tocar_nota(3, 150000);
+    sleep_ms(100);
+    tocar_nota(4, 150000);
+
+    sleep_ms(250);
+
+    tocar_nota(5, 200000);
+    sleep_ms(100);
+    tocar_nota(6, 200000);
+    sleep_ms(100);
+    tocar_nota(5, 200000);
+    sleep_ms(100);
+    tocar_nota(4, 200000);
+    sleep_ms(100);
+    tocar_nota(3, 200000);
+    sleep_ms(100);
+    tocar_nota(2, 200000);
+    sleep_ms(100);
+    tocar_nota(1, 200000);
+}
+
 int main() {
 
     //Inicialição das funções
@@ -171,6 +288,9 @@ int main() {
                     break;
                 case '1':
                     alarm_mode();
+                    break;
+                case '2':
+                    musica();
                     break;
                 case 'A':
                     gpio_put(LED_GREEN, 1);
